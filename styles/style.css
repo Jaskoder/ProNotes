@@ -40,6 +40,9 @@
     --dark-red-bg: hsl(5, 50%, 10%);
     --dark-red-color: hsl(5, 100%, 54%);
 
+    --overlay-light-mode-bg : rgba(0, 0, 0, 0.7);
+    --overlay-dark-mode-bg : rgba(255, 255, 255, 0.5);
+
     --radius-medium: 28px;
     --radius-full: 50%;
     --radius-small: 10px;
@@ -56,6 +59,7 @@
     --red-color: var(--light-red-color);
     --green-bg: var(--light-green-bg);
     --green-color: var(--light-green-color);
+    --overlay-bg : var(--overlay-light-mode-bg)
 }
 
 .dark-mode {
@@ -68,6 +72,7 @@
     --red-color: var(--dark-red-color);
     --green-bg: var(--dark-green-bg);
     --green-color: var(--dark-green-color);
+    --overlay-bg : var(--overlay-dark-mode-bg);
 }
 
 
@@ -89,8 +94,7 @@ p {
 body {}
 
 span,
-a,
-p {
+a {
     color: var(--text-color);
 }
 
@@ -342,6 +346,18 @@ body:has(.dark-mode) {
     margin: 0.9rem 0;
 }
 
+.editor .text-view {
+
+}
+
+.text-view p {
+    color: var(--text-color) !important;
+
+    span {
+        color: inherit !important;
+    }
+}
+
 .editor .toolbar {
     position: absolute;
     bottom: 1rem;
@@ -376,6 +392,7 @@ body:has(.dark-mode) {
         justify-content: center;
         background: var(--background-color);
         color: var(--text-color);
+        font-weight: bold;
     }
 
     .tool-tip {
@@ -384,6 +401,7 @@ body:has(.dark-mode) {
         color: var(--text-color);
     }
 }
+
 
 .toolbar #red {
     .icon {
@@ -426,6 +444,12 @@ body:has(.dark-mode) {
 
 .toolbar button:active {
     transform: scale(0.9);
+}
+
+.toolbar > #save, #close, #red, #green, #blue, #black {
+    .icon {
+        color: #fff;
+    }
 }
 
 .toolbar #save {
@@ -584,6 +608,7 @@ body:has(.dark-mode) {
     padding: 1.5rem;
     border: 1px solid var(--text-color);
     color: var(--text-color);
+    animation: slide_down 0.4s ease;
 
     .icon {
         width: 30px;
@@ -617,8 +642,7 @@ body:has(.dark-mode) {
     left: 0;
     right: 0;
     bottom: 0;
-    opacity: 0.5;
-    backdrop-filter: blur(15px);
+    background-color: var(--overlay-bg);
     display: none;
     z-index: 9996;
     display: none;
@@ -634,11 +658,17 @@ body:has(.dark-mode) {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background: var(--second-background-color);
+    background: var(--background-color);
     padding: 1.5rem;
     border-radius: var(--radius-small);
     border: 1px solid var(--text-color);
     z-index: 9999;
+
+    .message {
+        text-align: center;
+        font-size: 0.9rem;
+        width: 70%;
+    }
 
     .btns {
         
@@ -652,10 +682,10 @@ body:has(.dark-mode) {
         }
 
         #true {
-            background: var(--green-bg);
+            background: var(--green-color);
         }
         #false {
-            background: var(--red-bg);
+            background: var(--red-color);
         }
     }
 }
@@ -698,14 +728,14 @@ body:has(.prompt) .overlay {
     }
 
     .red {
-        color: var(--red-color);
+        color: var(--red-color) !important;
     }
 
     .green {
-        color: var(--green-color);
+        color: var(--green-color) !important;
     }
     .blue {
-        color: var(--color-blue-100);
+        color: var(--color-blue-100) !important;
     }
 
     .red, .green, .blue {
@@ -718,5 +748,13 @@ body:has(.prompt) .overlay {
         transform: scale(0.9);
     } to {
         transform: scale(1);
+    }
+}
+
+@keyframes slide_down {
+    from {
+        top : -5rem;
+    } to {
+        top: 3rem;
     }
 }
