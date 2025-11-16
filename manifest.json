@@ -1,0 +1,21 @@
+{
+  "name": "ProNotes",
+  "short_name": "ProNotes",
+  "description": "App for taking notes.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "",
+  "theme_color": "",
+  "icons": [
+    {
+      "src": "/assets/android-chrome-192x192",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/assets/android-chrome-512x512",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
