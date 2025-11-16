@@ -2,7 +2,7 @@
   "name": "ProNotes",
   "short_name": "ProNotes",
   "description": "App for taking notes.",
-  "start_url": "/",
+  "start_url": "/ProNote/",
   "display": "standalone",
   "background_color": "",
   "theme_color": "",
