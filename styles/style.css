@@ -195,11 +195,60 @@ html ::-webkit-scrollbar-thumb {
         transform: translateX(0%);
         left: 1rem;
     }
+
+    .profile {
+        width: 90%;
+        left: 1rem;
+        transform: translateX(0);
+        .name {
+            display: block;
+        }
+    }
 }
 
 body:has(.dark-mode) {
     .nav-bar ul li {
         background: var(--third-background-color);
+    }
+}
+
+.nav-bar .profile {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 0.6rem;
+    position: absolute;
+    bottom: 1rem;
+    left: 50%;
+    transform: translateX(-50%);
+    height: 3.5rem;
+    background: var(--third-background-color);
+    border-radius: var(--radius-medium);
+    padding: 0 0.3rem;
+
+
+    .img {
+        width: 45px;
+        height: 45px;
+        img {
+            width: 100%;
+            border-radius: var(--radius-full);
+        }
+    }
+    .name {
+        display: none;
+        overflow: hidden;
+    }
+    h3 {
+        font-weight: 800;
+        color: var(--text-color);
+        font-family: 'Montserrat', sans-serif;
+        font-size: 0.85rem;
+    }
+    .factory {
+        font-size: 0.6rem;
+        font-family: 'Roboto', sans-serif;
+        letter-spacing: 3px;
     }
 }
 
